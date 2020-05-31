@@ -187,6 +187,7 @@ namespace Quanlykho.Forms
             }
             else
             {
+                grbThongtinhang.Enabled = true;
                 btnLuu.Enabled = true;
                 btnXoa.Enabled = true;
                 txtDongiaban.ReadOnly = false;
@@ -204,39 +205,6 @@ namespace Quanlykho.Forms
             }
         }
 
-        private void txtTenHH_TextChanged(object sender, EventArgs e)
-        {
-                btnXoa.Enabled = false;
-        }
 
-        private void txtXuatxu_TextChanged(object sender, EventArgs e)
-        {
-            btnXoa.Enabled = false;
-        }
-
-        private void txtAnh_TextChanged(object sender, EventArgs e)
-        {
-            btnXoa.Enabled = false;
-        }
-
-        private void txtGhichu_TextChanged(object sender, EventArgs e)
-        {
-            btnXoa.Enabled = false;
-        }
-
-        private void txtSoluong_TextChanged(object sender, EventArgs e)
-        {
-            btnXoa.Enabled = false;
-        }
-
-        private void txtDongiaban_TextChanged(object sender, EventArgs e)
-        {
-            btnXoa.Enabled = false;
-        }
-
-        private void txtDongianhap_TextChanged(object sender, EventArgs e)
-        {
-            btnXoa.Enabled = false;
-        }
     }
 }

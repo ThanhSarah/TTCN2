@@ -63,13 +63,13 @@ namespace Quanlykho.Forms
             string sql;
             if (txtMaCV.Text == "")
             {
-                MessageBox.Show("Bạn phải nhập tên hàng hóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn phải nhập mã chức vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMaCV.Focus();
                 return;
             }
             if (txtTenCV.Text == "")
             {
-                MessageBox.Show("Bạn phải nhập đơn giá nhập", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn phải nhập tên chức vụ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTenCV.Focus();
                 return;
             }
@@ -132,21 +132,12 @@ namespace Quanlykho.Forms
             }
             else
             {
+                grbChucvu.Enabled = true;
                 btnLuu.Enabled = true;
                 btnXoa.Enabled = true;
-                txtMaCV.Text = dataGridView.CurrentRow.Cells["Machucvu"].Value.ToString();
-                txtTenCV.Text = dataGridView.CurrentRow.Cells["Tenchucvu"].Value.ToString();
+                txtMaCV.Text = dataGridView.CurrentRow.Cells["MaCV"].Value.ToString();
+                txtTenCV.Text = dataGridView.CurrentRow.Cells["TenCV"].Value.ToString();
             }
-        }
-
-        private void txtMaCV_TextChanged(object sender, EventArgs e)
-        {
-            btnXoa.Enabled = false;
-        }
-
-        private void txtTenCV_TextChanged(object sender, EventArgs e)
-        {
-            btnXoa.Enabled = false;
         }
     }
 }
