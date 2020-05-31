@@ -12,6 +12,7 @@ namespace Quanlykho
 {
     public partial class frmDangnhap : Form
     {
+        public static string MaCV;
         public frmDangnhap()
         {
             InitializeComponent();
@@ -19,14 +20,16 @@ namespace Quanlykho
 
         private void frmDangnhap_Load(object sender, EventArgs e)
         {
+            chkShowpass.Checked = false;
+            txtMatkhau.PasswordChar = '*';
         }
 
         private void btnDangnhap_Click(object sender, EventArgs e)
         {
-            if (txtTendangnhap.Text == "")
+            if (cboTendangnhap.Text == "")
             {
                 MessageBox.Show("Bạn phải nhập tên đăng nhập", "Thông báo");
-                txtTendangnhap.Focus();
+                cboTendangnhap.Focus();
                 return;
             }
             if (txtMatkhau.Text == "")
@@ -35,11 +38,11 @@ namespace Quanlykho
                 txtMatkhau.Focus();
                 return;
             }
-            string sql = "select * from tblDangnhap where Tendangnhap=N'" + txtTendangnhap.Text + "'and Password =N'" + txtMatkhau.Text + "'";
+            string sql = "select * from tblDangnhap where Tendangnhap=N'" + cboTendangnhap.Text + "'and Matkhau =N'" + txtMatkhau.Text + "'";
             DataTable table = ThucthiSQL.DocBang(sql);
             if (table.Rows.Count > 0)
             {
-                quyen = table.Rows[0][2].ToString();
+                MaCV = table.Rows[0][2].ToString();
                 this.Hide();
                 Forms.frmMain f = new Forms.frmMain();
                 f.StartPosition = FormStartPosition.CenterScreen;
@@ -48,18 +51,34 @@ namespace Quanlykho
             else
             {
                 MessageBox.Show("Sai tên tài khoản hoặc mật khẩu. Bạn hãy nhập lại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtUsername.Text = "";
-                txtPassword.Text = "";
-                txtUsername.Focus();
+                cboTendangnhap.Text = "";
+                txtMatkhau.Text = "";
+                cboTendangnhap.Focus();
             }
-            Forms.frmMain f = new Forms.frmMain();
-            f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbTendangnhap_DropDown(object sender, EventArgs e)
+        {
+            cboTendangnhap.DataSource = ThucthiSQL.DocBang("select Tendangnhap from tblDangnhap");
+            cboTendangnhap.ValueMember = "Tendangnhap";
+            cboTendangnhap.SelectedIndex = -1;
+        }
+
+        private void chkShowpass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowpass.Checked == false)
+            {
+                txtMatkhau.PasswordChar = '*';
+            }
+            else
+            {
+                txtMatkhau.PasswordChar = (char)0;
+            }
         }
     }
 }

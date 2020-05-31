@@ -16,5 +16,74 @@ namespace Quanlykho.Forms
         {
             InitializeComponent();
         }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmDangnhap f = new frmDangnhap();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void thôngTinHàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nhà sách XƯA VÀ NAY Hà Nội" + Environment.NewLine +
+                            "Địa chỉ: 676 Đống Đa, Hà Nội" + Environment.NewLine +
+                            "Email: nsxuavanay@gmail.com" + Environment.NewLine +
+                            "Số điện thoại: 0917431234");
+        }
+
+        private void thôngTinPhiênBảnPhầnMềmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Họ tên sinh viên: Nguyễn Thị Thanh" + Environment.NewLine +
+                            "Mã số sinh viên: 20A4040132" + Environment.NewLine +
+                            "Thực tập chuyên ngành 2");
+        }
+
+        private void hàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmHang f = new frmHang();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmKhachhang f = new frmKhachhang();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmNhanvien f = new frmNhanvien();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void nCCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmNCC f = new frmNCC();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void chứcVụToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmChucvu f = new frmChucvu();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            if (frmDangnhap.MaCV != "QL")
+            {
+                nhânViênToolStripMenuItem.Visible = false;
+                chứcVụToolStripMenuItem.Visible = false;
+                tìmKiếmChứcVụToolStripMenuItem.Visible = false;
+                tìmKiếmNhânViênToolStripMenuItem.Visible = false;
+            }
+        }
     }
 }
