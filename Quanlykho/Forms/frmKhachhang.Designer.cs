@@ -43,6 +43,8 @@
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.txtTimkiem = new System.Windows.Forms.TextBox();
+            this.btnTimkiem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.grbKhachhang.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +52,7 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(55, 242);
+            this.dataGridView.Location = new System.Drawing.Point(21, 208);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(531, 150);
             this.dataGridView.TabIndex = 25;
@@ -130,16 +132,16 @@
             this.grbKhachhang.Controls.Add(this.txtTenKH);
             this.grbKhachhang.Controls.Add(this.txtDiachi);
             this.grbKhachhang.Controls.Add(this.txtSDT);
-            this.grbKhachhang.Location = new System.Drawing.Point(55, 41);
+            this.grbKhachhang.Location = new System.Drawing.Point(21, 23);
             this.grbKhachhang.Name = "grbKhachhang";
-            this.grbKhachhang.Size = new System.Drawing.Size(531, 162);
+            this.grbKhachhang.Size = new System.Drawing.Size(531, 129);
             this.grbKhachhang.TabIndex = 26;
             this.grbKhachhang.TabStop = false;
             this.grbKhachhang.Text = "Thông tin khách hàng";
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(631, 198);
+            this.btnXoa.Location = new System.Drawing.Point(597, 170);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(83, 29);
             this.btnXoa.TabIndex = 72;
@@ -149,7 +151,7 @@
             // 
             // btnDong
             // 
-            this.btnDong.Location = new System.Drawing.Point(631, 363);
+            this.btnDong.Location = new System.Drawing.Point(597, 329);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(83, 29);
             this.btnDong.TabIndex = 71;
@@ -159,7 +161,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(631, 284);
+            this.btnHuy.Location = new System.Drawing.Point(597, 249);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(83, 29);
             this.btnHuy.TabIndex = 70;
@@ -169,7 +171,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(631, 128);
+            this.btnLuu.Location = new System.Drawing.Point(597, 90);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(83, 29);
             this.btnLuu.TabIndex = 69;
@@ -179,7 +181,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(631, 41);
+            this.btnThem.Location = new System.Drawing.Point(597, 23);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(83, 29);
             this.btnThem.TabIndex = 68;
@@ -187,11 +189,35 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // txtTimkiem
+            // 
+            this.txtTimkiem.Location = new System.Drawing.Point(21, 170);
+            this.txtTimkiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTimkiem.Name = "txtTimkiem";
+            this.txtTimkiem.Size = new System.Drawing.Size(443, 20);
+            this.txtTimkiem.TabIndex = 73;
+            this.txtTimkiem.Tag = "";
+            this.txtTimkiem.Enter += new System.EventHandler(this.txtTimkiem_Enter);
+            this.txtTimkiem.Leave += new System.EventHandler(this.txtTimkiem_Leave);
+            // 
+            // btnTimkiem
+            // 
+            this.btnTimkiem.Location = new System.Drawing.Point(475, 168);
+            this.btnTimkiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimkiem.Name = "btnTimkiem";
+            this.btnTimkiem.Size = new System.Drawing.Size(77, 21);
+            this.btnTimkiem.TabIndex = 74;
+            this.btnTimkiem.Text = "Tìm Kiếm";
+            this.btnTimkiem.UseVisualStyleBackColor = true;
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
+            // 
             // frmKhachhang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 438);
+            this.ClientSize = new System.Drawing.Size(705, 388);
+            this.Controls.Add(this.btnTimkiem);
+            this.Controls.Add(this.txtTimkiem);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.btnHuy);
@@ -206,6 +232,7 @@
             this.grbKhachhang.ResumeLayout(false);
             this.grbKhachhang.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -226,5 +253,7 @@
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.TextBox txtTimkiem;
+        private System.Windows.Forms.Button btnTimkiem;
     }
 }

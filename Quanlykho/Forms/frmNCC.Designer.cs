@@ -43,6 +43,8 @@
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.grbNhacungcap = new System.Windows.Forms.GroupBox();
+            this.btnTimkiem = new System.Windows.Forms.Button();
+            this.txtTimkiem = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.grbNhacungcap.SuspendLayout();
             this.SuspendLayout();
@@ -105,7 +107,7 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(23, 184);
+            this.dataGridView.Location = new System.Drawing.Point(23, 202);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(472, 161);
             this.dataGridView.TabIndex = 12;
@@ -122,7 +124,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(531, 168);
+            this.btnXoa.Location = new System.Drawing.Point(531, 180);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 62;
@@ -132,7 +134,7 @@
             // 
             // btnDong
             // 
-            this.btnDong.Location = new System.Drawing.Point(531, 322);
+            this.btnDong.Location = new System.Drawing.Point(531, 340);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(75, 23);
             this.btnDong.TabIndex = 61;
@@ -142,7 +144,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(531, 243);
+            this.btnHuy.Location = new System.Drawing.Point(531, 261);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(75, 23);
             this.btnHuy.TabIndex = 60;
@@ -152,7 +154,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(531, 91);
+            this.btnLuu.Location = new System.Drawing.Point(531, 101);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 59;
@@ -187,11 +189,35 @@
             this.grbNhacungcap.TabStop = false;
             this.grbNhacungcap.Text = "Thông tin nhà cung cấp";
             // 
+            // btnTimkiem
+            // 
+            this.btnTimkiem.Location = new System.Drawing.Point(426, 161);
+            this.btnTimkiem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimkiem.Name = "btnTimkiem";
+            this.btnTimkiem.Size = new System.Drawing.Size(69, 21);
+            this.btnTimkiem.TabIndex = 76;
+            this.btnTimkiem.Text = "Tìm Kiếm";
+            this.btnTimkiem.UseVisualStyleBackColor = true;
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
+            // 
+            // txtTimkiem
+            // 
+            this.txtTimkiem.Location = new System.Drawing.Point(23, 162);
+            this.txtTimkiem.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTimkiem.Name = "txtTimkiem";
+            this.txtTimkiem.Size = new System.Drawing.Size(396, 20);
+            this.txtTimkiem.TabIndex = 75;
+            this.txtTimkiem.Tag = "";
+            this.txtTimkiem.Enter += new System.EventHandler(this.txtTimkiem_Enter);
+            this.txtTimkiem.Leave += new System.EventHandler(this.txtTimkiem_Leave);
+            // 
             // frmNCC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 379);
+            this.ClientSize = new System.Drawing.Size(632, 389);
+            this.Controls.Add(this.btnTimkiem);
+            this.Controls.Add(this.txtTimkiem);
             this.Controls.Add(this.grbNhacungcap);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnDong);
@@ -206,6 +232,7 @@
             this.grbNhacungcap.ResumeLayout(false);
             this.grbNhacungcap.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -226,5 +253,7 @@
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.GroupBox grbNhacungcap;
+        private System.Windows.Forms.Button btnTimkiem;
+        private System.Windows.Forms.TextBox txtTimkiem;
     }
 }

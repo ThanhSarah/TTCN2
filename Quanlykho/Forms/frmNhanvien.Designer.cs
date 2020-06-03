@@ -50,8 +50,10 @@
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.grbNhanvien = new System.Windows.Forms.GroupBox();
-            this.dtpNgaysinh = new System.Windows.Forms.DateTimePicker();
             this.cboMaCV = new System.Windows.Forms.ComboBox();
+            this.dtpNgaysinh = new System.Windows.Forms.DateTimePicker();
+            this.btnTimkiem = new System.Windows.Forms.Button();
+            this.txtTimkiem = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.grbNhanvien.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +61,7 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(22, 259);
+            this.dataGridView.Location = new System.Drawing.Point(22, 297);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(483, 238);
             this.dataGridView.TabIndex = 25;
@@ -196,7 +198,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(552, 242);
+            this.btnXoa.Location = new System.Drawing.Point(552, 260);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(83, 29);
             this.btnXoa.TabIndex = 67;
@@ -206,7 +208,7 @@
             // 
             // btnDong
             // 
-            this.btnDong.Location = new System.Drawing.Point(552, 468);
+            this.btnDong.Location = new System.Drawing.Point(552, 506);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(83, 29);
             this.btnDong.TabIndex = 66;
@@ -216,7 +218,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(552, 360);
+            this.btnHuy.Location = new System.Drawing.Point(552, 387);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(83, 29);
             this.btnHuy.TabIndex = 65;
@@ -226,7 +228,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(552, 130);
+            this.btnLuu.Location = new System.Drawing.Point(552, 138);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(83, 29);
             this.btnLuu.TabIndex = 64;
@@ -270,6 +272,15 @@
             this.grbNhanvien.TabStop = false;
             this.grbNhanvien.Text = "Thông tin nhân viên";
             // 
+            // cboMaCV
+            // 
+            this.cboMaCV.FormattingEnabled = true;
+            this.cboMaCV.Location = new System.Drawing.Point(103, 77);
+            this.cboMaCV.Name = "cboMaCV";
+            this.cboMaCV.Size = new System.Drawing.Size(118, 21);
+            this.cboMaCV.TabIndex = 37;
+            this.cboMaCV.DropDown += new System.EventHandler(this.cboMaCV_DropDown);
+            // 
             // dtpNgaysinh
             // 
             this.dtpNgaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -278,19 +289,35 @@
             this.dtpNgaysinh.Size = new System.Drawing.Size(120, 20);
             this.dtpNgaysinh.TabIndex = 36;
             // 
-            // cboMaCV
+            // btnTimkiem
             // 
-            this.cboMaCV.FormattingEnabled = true;
-            this.cboMaCV.Location = new System.Drawing.Point(103, 77);
-            this.cboMaCV.Name = "cboMaCV";
-            this.cboMaCV.Size = new System.Drawing.Size(118, 21);
-            this.cboMaCV.TabIndex = 37;
+            this.btnTimkiem.Location = new System.Drawing.Point(436, 260);
+            this.btnTimkiem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimkiem.Name = "btnTimkiem";
+            this.btnTimkiem.Size = new System.Drawing.Size(69, 21);
+            this.btnTimkiem.TabIndex = 78;
+            this.btnTimkiem.Text = "Tìm Kiếm";
+            this.btnTimkiem.UseVisualStyleBackColor = true;
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
+            // 
+            // txtTimkiem
+            // 
+            this.txtTimkiem.Location = new System.Drawing.Point(22, 260);
+            this.txtTimkiem.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTimkiem.Name = "txtTimkiem";
+            this.txtTimkiem.Size = new System.Drawing.Size(410, 20);
+            this.txtTimkiem.TabIndex = 77;
+            this.txtTimkiem.Tag = "";
+            this.txtTimkiem.Enter += new System.EventHandler(this.txtTimkiem_Enter);
+            this.txtTimkiem.Leave += new System.EventHandler(this.txtTimkiem_Leave);
             // 
             // frmNhanvien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 533);
+            this.ClientSize = new System.Drawing.Size(667, 558);
+            this.Controls.Add(this.btnTimkiem);
+            this.Controls.Add(this.txtTimkiem);
             this.Controls.Add(this.grbNhanvien);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnDong);
@@ -299,12 +326,14 @@
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.dataGridView);
             this.Name = "frmNhanvien";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thông tin nhân viên";
             this.Load += new System.EventHandler(this.frmNhanvien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.grbNhanvien.ResumeLayout(false);
             this.grbNhanvien.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -334,5 +363,7 @@
         private System.Windows.Forms.GroupBox grbNhanvien;
         private System.Windows.Forms.DateTimePicker dtpNgaysinh;
         private System.Windows.Forms.ComboBox cboMaCV;
+        private System.Windows.Forms.Button btnTimkiem;
+        private System.Windows.Forms.TextBox txtTimkiem;
     }
 }

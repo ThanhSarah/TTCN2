@@ -12,9 +12,15 @@ namespace Quanlykho.Forms
 {
     public partial class frmHang : Form
     {
+        DataTable tblH;
         public frmHang()
         {
             InitializeComponent();
+
+            txtTimkiem.ForeColor = Color.LightGray;
+            txtTimkiem.Text = "Nhập mã hàng, tên hàng hoặc xuất xứ để tìm kiếm";
+            this.txtTimkiem.Leave += new System.EventHandler(this.txtTimkiem_Leave);
+            this.txtTimkiem.Enter += new System.EventHandler(this.txtTimkiem_Enter);
         }
 
         private void frmHang_Load(object sender, EventArgs e)
@@ -31,16 +37,14 @@ namespace Quanlykho.Forms
             txtSoluong.Text = "0";
             txtMaHH.ReadOnly = true;
             grbThongtinhang.Enabled = false;
+            string sql = "SELECT * FROM tblHang";
+            tblH = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblH;
             Hienthi_Luoi();
         }
 
         private void Hienthi_Luoi()
         {
-            string sql;
-            DataTable tblH;
-            sql = "SELECT * FROM tblHang";
-            tblH = ThucthiSQL.DocBang(sql);
-            dataGridView.DataSource = tblH;
             dataGridView.Columns[0].HeaderText = "Mã hàng";
             dataGridView.Columns[1].HeaderText = "Tên hàng";
             dataGridView.Columns[2].HeaderText = "Đơn giá bán";
@@ -59,7 +63,6 @@ namespace Quanlykho.Forms
             dataGridView.Columns[7].Width = 200;
             dataGridView.AllowUserToAddRows = false;
             dataGridView.EditMode = DataGridViewEditMode.EditProgrammatically;
-            tblH.Dispose();
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -151,6 +154,9 @@ namespace Quanlykho.Forms
             btnHuy.Enabled = false;
             btnXoa.Enabled = false;
             ResetValues();
+            sql = "SELECT * FROM tblHang";
+            tblH = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblH;
             Hienthi_Luoi();
         }
 
@@ -174,6 +180,9 @@ namespace Quanlykho.Forms
             {
                 sql = "DELETE FROM tblHang WHERE Mahang=N'" + txtMaHH.Text + "'";
                 ThucthiSQL.CapNhatDuLieu(sql);
+                sql = "SELECT * FROM tblHang";
+                tblH = ThucthiSQL.DocBang(sql);
+                dataGridView.DataSource = tblH;
                 Hienthi_Luoi();
             }
         }
@@ -205,6 +214,38 @@ namespace Quanlykho.Forms
             }
         }
 
+        private void txtTimkiem_Leave(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "")
+            {
+                txtTimkiem.Text = "Nhập mã hàng, tên hàng hoặc xuất xứ để tìm kiếm";
+                txtTimkiem.ForeColor = Color.Gray;
+            }
+        }
 
+        private void txtTimkiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "Nhập mã hàng, tên hàng hoặc xuất xứ để tìm kiếm")
+            {
+                txtTimkiem.Text = "";
+                txtTimkiem.ForeColor = Color.Black;
+            }
+        }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+            string sql = "SELECT * from tblHang where Mahang Like N'%" + txtTimkiem.Text + "%' or Tenhang Like N'%" + txtTimkiem.Text + "%' or Xuatxu Like N'%" + txtTimkiem.Text + "%'";
+            tblH = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblH;
+            Hienthi_Luoi();
+            if (tblH.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Có " + tblH.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

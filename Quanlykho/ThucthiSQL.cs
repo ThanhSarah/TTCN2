@@ -81,7 +81,7 @@ namespace Quanlykho
             string key = tiento;
             string[] partsday = new string[5];
             partsday = DateTime.Now.ToShortDateString().Split('/');
-            string d = string.Format("{0}{1}{2}", partsday[0], partsday[1], partsday[2]);
+            string d = string.Format("{0}{1}{2}", partsday[2], partsday[0], partsday[1]);
             key = key + d;
             string[] partstime = new string[5];
             partstime = DateTime.Now.ToLongTimeString().Split(':');

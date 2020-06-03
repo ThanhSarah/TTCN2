@@ -11,12 +11,8 @@ C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmKhachhang.
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmMain.resources
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmNCC.resources
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmNhanvien.resources
-C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmTimkiemhanghoa.resources
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmTimkiemhoadonban.resources
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmTimkiemhoadonnhap.resources
-C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmTimkiemKH.resources
-C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmTimkiemNCC.resources
-C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Forms.frmTimkiemnhanvien.resources
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.frmDangnhap.resources
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.Properties.Resources.resources
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.csproj.GenerateResource.Cache
@@ -26,3 +22,4 @@ C:\Users\madeb\Documents\TTCN2\Quanlykho\bin\Debug\Quanlykho.exe
 C:\Users\madeb\Documents\TTCN2\Quanlykho\bin\Debug\Quanlykho.pdb
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.exe
 C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.pdb
+C:\Users\madeb\Documents\TTCN2\Quanlykho\obj\Debug\Quanlykho.csproj.ResolveComReference.cache

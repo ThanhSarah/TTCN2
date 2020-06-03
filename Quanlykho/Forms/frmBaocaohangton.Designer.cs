@@ -43,6 +43,7 @@
             this.btnDong.TabIndex = 5;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // btnInbaocao
             // 
@@ -53,6 +54,7 @@
             this.btnInbaocao.TabIndex = 4;
             this.btnInbaocao.Text = "In báo cáo";
             this.btnInbaocao.UseVisualStyleBackColor = true;
+            this.btnInbaocao.Click += new System.EventHandler(this.btnInbaocao_Click);
             // 
             // dataGridView
             // 
@@ -74,6 +76,7 @@
             this.Controls.Add(this.dataGridView);
             this.Name = "frmBaocaohangton";
             this.Text = "frmBaocaohangton";
+            this.Load += new System.EventHandler(this.frmBaocaohangton_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

@@ -81,9 +81,49 @@ namespace Quanlykho.Forms
             {
                 nhânViênToolStripMenuItem.Visible = false;
                 chứcVụToolStripMenuItem.Visible = false;
-                tìmKiếmChứcVụToolStripMenuItem.Visible = false;
-                tìmKiếmNhânViênToolStripMenuItem.Visible = false;
             }
+        }
+
+        private void hóaĐơnNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmHoadonnhap f = new frmHoadonnhap();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void hóaĐơnBánToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmHoadonban f = new frmHoadonban();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void tìmKiếmHóaĐơnBánToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmTimkiemhoadonban f = new frmTimkiemhoadonban();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void tìmKiếmHóaĐơnNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmTimkiemhoadonnhap f = new frmTimkiemhoadonnhap();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        } 
+
+        private void báoCáoDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmBaocaodoanhthu f = new frmBaocaodoanhthu();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
+        }
+
+        private void báoCáoHàngTồnKhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.frmBaocaohangton f = new frmBaocaohangton();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.Show();
         }
     }
 }

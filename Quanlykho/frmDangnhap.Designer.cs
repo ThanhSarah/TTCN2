@@ -76,6 +76,8 @@
             this.txtMatkhau.Name = "txtMatkhau";
             this.txtMatkhau.Size = new System.Drawing.Size(302, 28);
             this.txtMatkhau.TabIndex = 5;
+            this.txtMatkhau.Enter += new System.EventHandler(this.txtMatkhau_Enter);
+            this.txtMatkhau.Leave += new System.EventHandler(this.txtMatkhau_Leave);
             // 
             // btnHuy
             // 
@@ -107,6 +109,8 @@
             this.cboTendangnhap.Size = new System.Drawing.Size(302, 28);
             this.cboTendangnhap.TabIndex = 9;
             this.cboTendangnhap.DropDown += new System.EventHandler(this.cbTendangnhap_DropDown);
+            this.cboTendangnhap.Enter += new System.EventHandler(this.cboTendangnhap_Enter);
+            this.cboTendangnhap.Leave += new System.EventHandler(this.cboTendangnhap_Leave);
             // 
             // frmDangnhap
             // 

@@ -12,9 +12,15 @@ namespace Quanlykho.Forms
 {
     public partial class frmNCC : Form
     {
+        DataTable tblNCC;
         public frmNCC()
         {
             InitializeComponent();
+
+            txtTimkiem.ForeColor = Color.LightGray;
+            txtTimkiem.Text = "Nhập mã nhà cung cấp, tên nhà cung cấp, số điện thoại hoặc địa chỉ để tìm kiếm";
+            this.txtTimkiem.Leave += new System.EventHandler(this.txtTimkiem_Leave);
+            this.txtTimkiem.Enter += new System.EventHandler(this.txtTimkiem_Enter);
         }
 
         private void frmNCC_Load(object sender, EventArgs e)
@@ -25,16 +31,14 @@ namespace Quanlykho.Forms
             btnXoa.Enabled = false;
             txtMaNCC.ReadOnly = true;
             grbNhacungcap.Enabled = false;
+            string sql = "SELECT * FROM tblNCC";
+            tblNCC = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblNCC;
             Hienthi_Luoi();
         }
 
         private void Hienthi_Luoi()
         {
-            string sql;
-            DataTable tblNCC;
-            sql = "SELECT * FROM tblNCC";
-            tblNCC = ThucthiSQL.DocBang(sql);
-            dataGridView.DataSource = tblNCC;
             dataGridView.Columns[0].HeaderText = "Mã nhà cung cấp";
             dataGridView.Columns[1].HeaderText = "Tên nhà cung cấp";
             dataGridView.Columns[2].HeaderText = "Số điện thoại";
@@ -45,7 +49,6 @@ namespace Quanlykho.Forms
             dataGridView.Columns[3].Width = 100;
             dataGridView.AllowUserToAddRows = false;
             dataGridView.EditMode = DataGridViewEditMode.EditProgrammatically;
-            tblNCC.Dispose();
         }
 
         private void ResetValues()
@@ -96,6 +99,9 @@ namespace Quanlykho.Forms
             btnHuy.Enabled = false;
             btnXoa.Enabled = false;
             ResetValues();
+            sql = "SELECT * FROM tblNCC";
+            tblNCC = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblNCC;
             Hienthi_Luoi();
         }
 
@@ -106,6 +112,10 @@ namespace Quanlykho.Forms
             {
                 sql = "DELETE FROM tblNCC WHERE MaNCC=N'" + txtMaNCC.Text + "'";
                 ThucthiSQL.CapNhatDuLieu(sql);
+                sql = "SELECT * FROM tblNCC";
+                tblNCC = ThucthiSQL.DocBang(sql);
+                dataGridView.DataSource = tblNCC;
+                Hienthi_Luoi();
                 Hienthi_Luoi();
             }
         }
@@ -154,6 +164,40 @@ namespace Quanlykho.Forms
                 txtTenNCC.Text = dataGridView.CurrentRow.Cells["TenNCC"].Value.ToString();
                 txtSDT.Text = dataGridView.CurrentRow.Cells["SDT"].Value.ToString();
                 txtDiachi.Text = dataGridView.CurrentRow.Cells["Diachi"].Value.ToString();
+            }
+        }
+
+        private void txtTimkiem_Leave(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "")
+            {
+                txtTimkiem.Text = "Nhập mã nhà cung cấp, tên nhà cung cấp, số điện thoại hoặc địa chỉ để tìm kiếm";
+                txtTimkiem.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtTimkiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "Nhập mã nhà cung cấp, tên nhà cung cấp, số điện thoại hoặc địa chỉ để tìm kiếm")
+            {
+                txtTimkiem.Text = "";
+                txtTimkiem.ForeColor = Color.Black;
+            }
+        }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+            string sql = "SELECT * from tblNCC where MaNCC Like N'%" + txtTimkiem.Text + "%' or TenNCC Like N'%" + txtTimkiem.Text + "%' or SDT Like N'%" + txtTimkiem.Text + "%'or Diachi Like N'%" + txtTimkiem.Text + "%'";
+            tblNCC = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblNCC;
+            Hienthi_Luoi();
+            if (tblNCC.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Có " + tblNCC.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

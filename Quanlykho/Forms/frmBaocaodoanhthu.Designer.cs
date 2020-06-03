@@ -36,6 +36,7 @@
             this.btnBaocao = new System.Windows.Forms.Button();
             this.dtpThang = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnDong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +50,7 @@
             this.btnLamlai.TabIndex = 7;
             this.btnLamlai.Text = "Làm lại";
             this.btnLamlai.UseVisualStyleBackColor = true;
+            this.btnLamlai.Click += new System.EventHandler(this.btnLamlai_Click);
             // 
             // btnInbaocao
             // 
@@ -59,6 +61,7 @@
             this.btnInbaocao.TabIndex = 6;
             this.btnInbaocao.Text = "In báo cáo";
             this.btnInbaocao.UseVisualStyleBackColor = true;
+            this.btnInbaocao.Click += new System.EventHandler(this.btnInbaocao_Click);
             // 
             // dataGridView
             // 
@@ -104,6 +107,7 @@
             this.btnBaocao.TabIndex = 2;
             this.btnBaocao.Text = "Báo cáo";
             this.btnBaocao.UseVisualStyleBackColor = true;
+            this.btnBaocao.Click += new System.EventHandler(this.btnBaocao_Click);
             // 
             // dtpThang
             // 
@@ -125,11 +129,23 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tháng, Năm";
             // 
+            // btnDong
+            // 
+            this.btnDong.Location = new System.Drawing.Point(407, 281);
+            this.btnDong.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(67, 35);
+            this.btnDong.TabIndex = 8;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.UseVisualStyleBackColor = true;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
+            // 
             // frmBaocaodoanhthu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 338);
+            this.Controls.Add(this.btnDong);
             this.Controls.Add(this.btnLamlai);
             this.Controls.Add(this.btnInbaocao);
             this.Controls.Add(this.dataGridView);
@@ -153,5 +169,6 @@
         private System.Windows.Forms.Button btnBaocao;
         private System.Windows.Forms.DateTimePicker dtpThang;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnDong;
     }
 }

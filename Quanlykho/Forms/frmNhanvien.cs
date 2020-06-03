@@ -12,9 +12,15 @@ namespace Quanlykho.Forms
 {
     public partial class frmNhanvien : Form
     {
+        DataTable tblNV;
         public frmNhanvien()
         {
             InitializeComponent();
+
+            txtTimkiem.ForeColor = Color.LightGray;
+            txtTimkiem.Text = "Nhập mã NV, tên NV, mã CV, giới tính, số điện thoại, địa chỉ hoặc CMT để tìm kiếm";
+            this.txtTimkiem.Leave += new System.EventHandler(this.txtTimkiem_Leave);
+            this.txtTimkiem.Enter += new System.EventHandler(this.txtTimkiem_Enter);
         }
 
         private void frmNhanvien_Load(object sender, EventArgs e)
@@ -25,16 +31,14 @@ namespace Quanlykho.Forms
             btnXoa.Enabled = false;
             txtManhanvien.ReadOnly = true;
             grbNhanvien.Enabled = false;
+            string sql = "SELECT * FROM tblNhanvien";
+            tblNV = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblNV;
             Hienthi_Luoi();
         }
 
         private void Hienthi_Luoi()
         {
-            string sql;
-            DataTable tblNV;
-            sql = "SELECT * FROM tblNhanvien";
-            tblNV = ThucthiSQL.DocBang(sql);
-            dataGridView.DataSource = tblNV;
             dataGridView.Columns[0].HeaderText = "Mã nhân viên";
             dataGridView.Columns[1].HeaderText = "Tên nhân viên";
             dataGridView.Columns[2].HeaderText = "Giới tính";
@@ -53,7 +57,6 @@ namespace Quanlykho.Forms
             dataGridView.Columns[7].Width = 100;
             dataGridView.AllowUserToAddRows = false;
             dataGridView.EditMode = DataGridViewEditMode.EditProgrammatically;
-            tblNV.Dispose();
         }
 
         private void ResetValues()
@@ -124,6 +127,9 @@ namespace Quanlykho.Forms
             btnHuy.Enabled = false;
             btnXoa.Enabled = false;
             ResetValues();
+            sql = "SELECT * FROM tblNhanvien";
+            tblNV = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblNV;
             Hienthi_Luoi();
         }
 
@@ -193,6 +199,47 @@ namespace Quanlykho.Forms
                 cboMaCV.Text = dataGridView.CurrentRow.Cells["MaCV"].Value.ToString();
                 txtDiachi.Text = dataGridView.CurrentRow.Cells["Diachi"].Value.ToString();
                 txtSDT.Text = dataGridView.CurrentRow.Cells["SDT"].Value.ToString();
+            }
+        }
+
+        private void cboMaCV_DropDown(object sender, EventArgs e)
+        {
+            cboMaCV.DataSource = ThucthiSQL.DocBang("select MaCV from tblChucvu");
+            cboMaCV.ValueMember = "MaCV";
+            cboMaCV.SelectedIndex = -1;
+        }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+            string sql = "SELECT * from tblNCC where MaNV Like N'%" + txtTimkiem.Text + "%' or TenNV Like N'%" + txtTimkiem.Text + "%' or MaCV Like N'%" + txtTimkiem.Text + "%' or Gioitinh Like N'%" + txtTimkiem.Text + "%' or Diachi Like N'%" + txtTimkiem.Text + "%' or SDT Like N'%" + txtTimkiem.Text + "%'or CMT Like N'%" + txtTimkiem.Text + "%'";
+            tblNV = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblNV;
+            Hienthi_Luoi();
+            if (tblNV.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Có " + tblNV.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void txtTimkiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "Nhập mã NV, tên NV, mã CV, giới tính, số điện thoại, địa chỉ hoặc CMT để tìm kiếm")
+            {
+                txtTimkiem.Text = "";
+                txtTimkiem.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtTimkiem_Leave(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "")
+            {
+                txtTimkiem.Text = "Nhập mã NV, tên NV, mã CV, giới tính, số điện thoại, địa chỉ hoặc CMT để tìm kiếm";
+                txtTimkiem.ForeColor = Color.Gray;
             }
         }
     }

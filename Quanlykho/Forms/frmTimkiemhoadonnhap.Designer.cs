@@ -52,6 +52,7 @@
             this.btnDong.TabIndex = 39;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // btnTimlai
             // 
@@ -62,6 +63,7 @@
             this.btnTimlai.TabIndex = 38;
             this.btnTimlai.Text = "Tìm lại";
             this.btnTimlai.UseVisualStyleBackColor = true;
+            this.btnTimlai.Click += new System.EventHandler(this.btnTimlai_Click);
             // 
             // btnTim
             // 
@@ -72,6 +74,7 @@
             this.btnTim.TabIndex = 37;
             this.btnTim.Text = "Tìm";
             this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // dataGridView
             // 
@@ -108,6 +111,7 @@
             this.txtTongtien.Name = "txtTongtien";
             this.txtTongtien.Size = new System.Drawing.Size(131, 20);
             this.txtTongtien.TabIndex = 33;
+            this.txtTongtien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTongtien_KeyPress);
             // 
             // label4
             // 
@@ -174,6 +178,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmTimkiemhoadonnhap";
             this.Text = "frmTimkiemhoadonnhap";
+            this.Load += new System.EventHandler(this.frmTimkiemhoadonnhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

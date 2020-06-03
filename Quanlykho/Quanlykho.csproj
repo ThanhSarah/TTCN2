@@ -50,6 +50,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -85,12 +86,6 @@
     <Compile Include="Forms\frmHang.Designer.cs">
       <DependentUpon>frmHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmHoadonban.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmHoadonban.Designer.cs">
-      <DependentUpon>frmHoadonban.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmHoadonnhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,12 +116,6 @@
     <Compile Include="Forms\frmNhanvien.Designer.cs">
       <DependentUpon>frmNhanvien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmTimkiemhanghoa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmTimkiemhanghoa.Designer.cs">
-      <DependentUpon>frmTimkiemhanghoa.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmTimkiemhoadonban.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,23 +128,11 @@
     <Compile Include="Forms\frmTimkiemhoadonnhap.Designer.cs">
       <DependentUpon>frmTimkiemhoadonnhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmTimkiemKH.cs">
+    <Compile Include="Forms\Hoadonban.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmTimkiemKH.Designer.cs">
-      <DependentUpon>frmTimkiemKH.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmTimkiemNCC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmTimkiemNCC.Designer.cs">
-      <DependentUpon>frmTimkiemNCC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmTimkiemnhanvien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmTimkiemnhanvien.Designer.cs">
-      <DependentUpon>frmTimkiemnhanvien.cs</DependentUpon>
+    <Compile Include="Forms\Hoadonban.Designer.cs">
+      <DependentUpon>Hoadonban.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDangnhap.cs">
       <SubType>Form</SubType>
@@ -178,9 +155,6 @@
     <EmbeddedResource Include="Forms\frmHang.resx">
       <DependentUpon>frmHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmHoadonban.resx">
-      <DependentUpon>frmHoadonban.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmHoadonnhap.resx">
       <DependentUpon>frmHoadonnhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,23 +170,14 @@
     <EmbeddedResource Include="Forms\frmNhanvien.resx">
       <DependentUpon>frmNhanvien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmTimkiemhanghoa.resx">
-      <DependentUpon>frmTimkiemhanghoa.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTimkiemhoadonban.resx">
       <DependentUpon>frmTimkiemhoadonban.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTimkiemhoadonnhap.resx">
       <DependentUpon>frmTimkiemhoadonnhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmTimkiemKH.resx">
-      <DependentUpon>frmTimkiemKH.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmTimkiemNCC.resx">
-      <DependentUpon>frmTimkiemNCC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmTimkiemnhanvien.resx">
-      <DependentUpon>frmTimkiemnhanvien.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Hoadonban.resx">
+      <DependentUpon>Hoadonban.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDangnhap.resx">
       <DependentUpon>frmDangnhap.cs</DependentUpon>
@@ -266,6 +231,35 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
