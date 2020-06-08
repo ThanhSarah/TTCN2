@@ -88,7 +88,7 @@ namespace Quanlykho.Forms
                 txtDienthoai.Text = "";
                 return;
             }
-            string sql = "select TenNCC, Diachi, Sodienthoai from tblNCC where MaNCC=N'" + cboMaNCC.Text + "'";
+            string sql = "select TenNCC, Diachi, SDT from tblNCC where MaNCC=N'" + cboMaNCC.Text + "'";
             DataTable table = ThucthiSQL.DocBang(sql);
             if (table.Rows.Count > 0)
             {
@@ -286,7 +286,7 @@ namespace Quanlykho.Forms
             double slmoi = sl + Convert.ToDouble(txtSoluong.Text);
             sql = "update tblHang set Soluongtonkho=" + slmoi + " where Mahang=N'" + cboMahang.Text + "'";
             ThucthiSQL.CapNhatDuLieu(sql);
-            double dgn = Convert.ToDouble(ThucthiSQL.DocBang("select Dongianhap from tblHang where Masach=N'" + cboMahang.Text + "'").Rows[0][0].ToString());
+            double dgn = Convert.ToDouble(ThucthiSQL.DocBang("select Dongianhap from tblHang where Mahang=N'" + cboMahang.Text + "'").Rows[0][0].ToString());
             double dgnmoi = (dgn * sl + Convert.ToDouble(txtSoluong.Text) * Convert.ToDouble(txtDongia.Text)) / (slmoi);
             sql = "update tblHang set Dongianhap=" + dgnmoi + "where Mahang = N'" + cboMahang.Text + "'";
             ThucthiSQL.CapNhatDuLieu(sql);
@@ -458,9 +458,9 @@ namespace Quanlykho.Forms
                 sql = "DELETE tblChitietHDN WHERE MaHDN=N'" + txtMahoadon.Text + "' AND Mahang = N'" + mahangxoa + "'";
                 ThucthiSQL.CapNhatDuLieu(sql);
                 // Cập nhật lại số lượng cho các mặt hàng
-                sl = Convert.ToDouble(ThucthiSQL.DocBang("SELECT Soluongtonkho FROM tblHang WHERE Masach = N'" + mahangxoa + "'").Rows[0][0].ToString());
+                sl = Convert.ToDouble(ThucthiSQL.DocBang("SELECT Soluongtonkho FROM tblHang WHERE Mahang = N'" + mahangxoa + "'").Rows[0][0].ToString());
                 slcon = sl - soluongxoa;
-                sql = "UPDATE tblSach SET Soluongtonkho =" + slcon + " WHERE Masach= N'" + mahangxoa + "'";
+                sql = "UPDATE tblHang SET Soluongtonkho =" + slcon + " WHERE Mahang= N'" + mahangxoa + "'";
                 ThucthiSQL.CapNhatDuLieu(sql);
                 // Cập nhật lại tổng tiền cho hóa đơn bán
                 tong = Convert.ToDouble(ThucthiSQL.DocBang("SELECT Tongtien FROM tblHoadonnhap WHERE MaHDN = N'" + txtMahoadon.Text + "'").Rows[0][0].ToString());

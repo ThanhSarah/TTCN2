@@ -74,7 +74,7 @@ namespace Quanlykho.Forms
                 return;
             }
             sql = "INSERT INTO tblChucvu(MaCV, TenCV) Values (N'" + txtMaCV.Text +
-                            "',N'" + txtTenCV.Text + ")";
+                            "',N'" + txtTenCV.Text + "')";
             ThucthiSQL.CapNhatDuLieu(sql);
             btnThem.Enabled = true;
             btnLuu.Enabled = false;

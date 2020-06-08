@@ -43,10 +43,9 @@
             // 
             // btnLamlai
             // 
-            this.btnLamlai.Location = new System.Drawing.Point(212, 281);
-            this.btnLamlai.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLamlai.Location = new System.Drawing.Point(318, 432);
             this.btnLamlai.Name = "btnLamlai";
-            this.btnLamlai.Size = new System.Drawing.Size(58, 35);
+            this.btnLamlai.Size = new System.Drawing.Size(87, 54);
             this.btnLamlai.TabIndex = 7;
             this.btnLamlai.Text = "Làm lại";
             this.btnLamlai.UseVisualStyleBackColor = true;
@@ -54,10 +53,9 @@
             // 
             // btnInbaocao
             // 
-            this.btnInbaocao.Location = new System.Drawing.Point(29, 281);
-            this.btnInbaocao.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInbaocao.Location = new System.Drawing.Point(44, 432);
             this.btnInbaocao.Name = "btnInbaocao";
-            this.btnInbaocao.Size = new System.Drawing.Size(67, 35);
+            this.btnInbaocao.Size = new System.Drawing.Size(100, 54);
             this.btnInbaocao.TabIndex = 6;
             this.btnInbaocao.Text = "In báo cáo";
             this.btnInbaocao.UseVisualStyleBackColor = true;
@@ -66,11 +64,10 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(29, 138);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView.Location = new System.Drawing.Point(44, 212);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 27;
-            this.dataGridView.Size = new System.Drawing.Size(445, 126);
+            this.dataGridView.Size = new System.Drawing.Size(668, 194);
             this.dataGridView.TabIndex = 5;
             // 
             // groupBox1
@@ -79,11 +76,9 @@
             this.groupBox1.Controls.Add(this.btnBaocao);
             this.groupBox1.Controls.Add(this.dtpThang);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(29, 36);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(44, 55);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(445, 86);
+            this.groupBox1.Size = new System.Drawing.Size(668, 132);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Điều kiện";
@@ -92,18 +87,16 @@
             // 
             this.dtpNam.CustomFormat = "yyyy";
             this.dtpNam.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNam.Location = new System.Drawing.Point(184, 34);
-            this.dtpNam.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpNam.Location = new System.Drawing.Point(276, 52);
             this.dtpNam.Name = "dtpNam";
-            this.dtpNam.Size = new System.Drawing.Size(59, 20);
+            this.dtpNam.Size = new System.Drawing.Size(86, 26);
             this.dtpNam.TabIndex = 3;
             // 
             // btnBaocao
             // 
-            this.btnBaocao.Location = new System.Drawing.Point(353, 29);
-            this.btnBaocao.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBaocao.Location = new System.Drawing.Point(530, 45);
             this.btnBaocao.Name = "btnBaocao";
-            this.btnBaocao.Size = new System.Drawing.Size(58, 30);
+            this.btnBaocao.Size = new System.Drawing.Size(87, 46);
             this.btnBaocao.TabIndex = 2;
             this.btnBaocao.Text = "Báo cáo";
             this.btnBaocao.UseVisualStyleBackColor = true;
@@ -113,28 +106,25 @@
             // 
             this.dtpThang.CustomFormat = "MM";
             this.dtpThang.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpThang.Location = new System.Drawing.Point(121, 35);
-            this.dtpThang.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpThang.Location = new System.Drawing.Point(182, 54);
             this.dtpThang.Name = "dtpThang";
-            this.dtpThang.Size = new System.Drawing.Size(45, 20);
+            this.dtpThang.Size = new System.Drawing.Size(66, 26);
             this.dtpThang.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(69, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.Size = new System.Drawing.Size(95, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tháng, Năm";
             // 
             // btnDong
             // 
-            this.btnDong.Location = new System.Drawing.Point(407, 281);
-            this.btnDong.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDong.Location = new System.Drawing.Point(610, 432);
             this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(67, 35);
+            this.btnDong.Size = new System.Drawing.Size(100, 54);
             this.btnDong.TabIndex = 8;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
@@ -142,16 +132,17 @@
             // 
             // frmBaocaodoanhthu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 338);
+            this.ClientSize = new System.Drawing.Size(758, 520);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.btnLamlai);
             this.Controls.Add(this.btnInbaocao);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmBaocaodoanhthu";
-            this.Text = "frmBaocaodoanhthu";
+            this.Text = "Báo cáo doanh thu";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

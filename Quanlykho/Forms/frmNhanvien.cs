@@ -120,7 +120,7 @@ namespace Quanlykho.Forms
                 gt = "Nu";
             }
             sql = "INSERT INTO tblHang(MaNV, TenNV, Gioitinh, Ngaysinh, CMT, MaCV, Diachi, SDT) Values (N'" + txtManhanvien.Text +
-                            "',N'" + txtTennhanvien.Text + "',N'" + gt + "',N'" + dtpNgaysinh.Text + "'," + txtCMT.Text + "',N'" + cboMaCV.Text + "',N'" + txtDiachi.Text + "',N'" + txtSDT.Text + ")";
+                            "',N'" + txtTennhanvien.Text + "',N'" + gt + "',N'" + dtpNgaysinh.Text + "'," + txtCMT.Text + "',N'" + cboMaCV.Text + "',N'" + txtDiachi.Text + "',N'" + txtSDT.Text + "')";
             ThucthiSQL.CapNhatDuLieu(sql);
             btnThem.Enabled = true;
             btnLuu.Enabled = false;

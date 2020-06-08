@@ -146,8 +146,8 @@ namespace Quanlykho.Forms
                 txtSoluong.Focus();
                 return;
             }
-            sql = "INSERT INTO tblHang(Mahang, TenHang, Dongiaban, Dongianhap, Soluongtonkho, Xuatxu, Anh, Ghichu) Values (N'" + txtMaHH.Text +
-                            "',N'" + txtTenHH.Text + "',N'" + txtDongiaban.Text + "',N'" + txtDongianhap.Text + "'," + txtSoluong.Text + "',N'" + txtXuatxu.Text + "',N'" + txtAnh.Text + "',N'" + txtGhichu.Text + ")";
+            sql = "INSERT INTO tblHang(Mahang, Tenhang, Dongiaban, Dongianhap, Soluongtonkho, Xuatxu, Anh, Ghichu) Values (N'" + txtMaHH.Text +
+                            "',N'" + txtTenHH.Text + "',N'" + txtDongiaban.Text + "',N'" + txtDongianhap.Text + "',N'" + txtSoluong.Text + "',N'" + txtXuatxu.Text + "',N'" + txtAnh.Text + "',N'" + txtGhichu.Text + "')";
             ThucthiSQL.CapNhatDuLieu(sql);
             btnThem.Enabled = true;
             btnLuu.Enabled = false;

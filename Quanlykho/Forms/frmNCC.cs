@@ -92,7 +92,7 @@ namespace Quanlykho.Forms
             }
 
             sql = "INSERT INTO tblNCC(MaNCC, TenNCC, Diachi, SDT) Values (N'" + txtMaNCC.Text +
-                            "',N'" + txtTenNCC.Text + "',N'" + txtDiachi.Text + "',N'" + txtSDT.Text + ")";
+                            "',N'" + txtTenNCC.Text + "',N'" + txtDiachi.Text + "',N'" + txtSDT.Text + "')";
             ThucthiSQL.CapNhatDuLieu(sql);
             btnThem.Enabled = true;
             btnLuu.Enabled = false;
