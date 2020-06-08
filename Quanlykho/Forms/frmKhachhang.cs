@@ -89,9 +89,18 @@ namespace Quanlykho.Forms
                 txtSDT.Focus();
                 return;
             }
-
-            sql = "INSERT INTO tblKhachhang(MaKH, TenKH, Diachi, SDT) Values (N'" + txtMaKH.Text +
+            sql = "select * from tblKhachhang where MaKH = N'" + txtMaKH.Text + "'";
+            tblKH = ThucthiSQL.DocBang(sql);
+            if (tblKH.Rows.Count == 0)
+            {
+                sql = "INSERT INTO tblKhachhang(MaKH, TenKH, Diachi, SDT) Values (N'" + txtMaKH.Text +
                             "',N'" + txtTenKH.Text + "',N'" + txtDiachi.Text + "',N'" + txtSDT.Text + "')";
+            }
+            else
+            {
+                sql = "UPDATE tblKhachhang SET TenKH = N'" + txtTenKH.Text + "', Diachi = N'" + txtDiachi.Text + "', SDT = N'" + txtSDT.Text + "' WHERE MaKH = N'" + txtMaKH.Text + "'";
+            }
+            
             ThucthiSQL.CapNhatDuLieu(sql);
             btnThem.Enabled = true;
             btnLuu.Enabled = false;
@@ -102,6 +111,7 @@ namespace Quanlykho.Forms
             tblKH = ThucthiSQL.DocBang(sql);
             dataGridView.DataSource = tblKH;
             Hienthi_Luoi();
+            grbKhachhang.Enabled = false;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -109,18 +119,34 @@ namespace Quanlykho.Forms
             string sql;
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                sql = "DELETE FROM tblKhachhang WHERE MaNCC=N'" + txtMaKH.Text + "'";
+                sql = "DELETE FROM tblKhachhang WHERE MaKH=N'" + txtMaKH.Text + "'";
                 ThucthiSQL.CapNhatDuLieu(sql);
                 sql = "SELECT * FROM tblKhachhang";
                 tblKH = ThucthiSQL.DocBang(sql);
                 dataGridView.DataSource = tblKH;
                 Hienthi_Luoi();
+                ResetValues();
+                grbKhachhang.Enabled = false;
+                btnHuy.Enabled = false;
+                btnLuu.Enabled = false;
             }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnXoa.Enabled == false)
+            {
+                if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ResetValues();
+                    btnThem.Enabled = true;
+                    btnLuu.Enabled = false;
+                    btnHuy.Enabled = false;
+                    btnXoa.Enabled = false;
+                    grbKhachhang.Enabled = false;
+                }
+            }
+            else
             {
                 ResetValues();
                 btnThem.Enabled = true;
@@ -129,6 +155,7 @@ namespace Quanlykho.Forms
                 btnXoa.Enabled = false;
                 grbKhachhang.Enabled = false;
             }
+            
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -148,6 +175,7 @@ namespace Quanlykho.Forms
 
         private void dataGridView_DoubleClick(object sender, EventArgs e)
         {
+            
             if (dataGridView.Rows.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -155,13 +183,15 @@ namespace Quanlykho.Forms
             }
             else
             {
+                btnHuy.Enabled = true;
                 grbKhachhang.Enabled = true;
                 btnLuu.Enabled = true;
-                btnXoa.Enabled = true;
-                txtMaKH.Text = dataGridView.CurrentRow.Cells["MaNCC"].Value.ToString();
-                txtTenKH.Text = dataGridView.CurrentRow.Cells["TenNCC"].Value.ToString();
+                
+                txtMaKH.Text = dataGridView.CurrentRow.Cells["MaKH"].Value.ToString();
+                txtTenKH.Text = dataGridView.CurrentRow.Cells["TenKH"].Value.ToString();
                 txtSDT.Text = dataGridView.CurrentRow.Cells["SDT"].Value.ToString();
                 txtDiachi.Text = dataGridView.CurrentRow.Cells["Diachi"].Value.ToString();
+                btnXoa.Enabled = true;
             }
         }
 
@@ -198,6 +228,11 @@ namespace Quanlykho.Forms
                 MessageBox.Show("Có " + tblKH.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
+        }
+
+        private void txtTenKH_TextChanged(object sender, EventArgs e)
+        {
+            btnXoa.Enabled = false;
         }
     }
 }

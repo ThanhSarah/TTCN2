@@ -94,6 +94,7 @@
             this.txtTenNCC.Name = "txtTenNCC";
             this.txtTenNCC.Size = new System.Drawing.Size(193, 26);
             this.txtTenNCC.TabIndex = 5;
+            this.txtTenNCC.TextChanged += new System.EventHandler(this.txtTenNCC_TextChanged);
             // 
             // txtSDT
             // 
@@ -102,6 +103,7 @@
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(172, 26);
             this.txtSDT.TabIndex = 6;
+            this.txtSDT.TextChanged += new System.EventHandler(this.txtTenNCC_TextChanged);
             // 
             // txtDiachi
             // 
@@ -110,6 +112,7 @@
             this.txtDiachi.Name = "txtDiachi";
             this.txtDiachi.Size = new System.Drawing.Size(172, 26);
             this.txtDiachi.TabIndex = 7;
+            this.txtDiachi.TextChanged += new System.EventHandler(this.txtTenNCC_TextChanged);
             // 
             // dataGridView
             // 

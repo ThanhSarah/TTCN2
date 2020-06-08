@@ -117,16 +117,27 @@ namespace Quanlykho.Forms
             }
             if (rdoNu.Checked == true)
             {
-                gt = "Nu";
+                gt = "Nữ";
             }
-            sql = "INSERT INTO tblHang(MaNV, TenNV, Gioitinh, Ngaysinh, CMT, MaCV, Diachi, SDT) Values (N'" + txtManhanvien.Text +
-                            "',N'" + txtTennhanvien.Text + "',N'" + gt + "',N'" + dtpNgaysinh.Text + "'," + txtCMT.Text + "',N'" + cboMaCV.Text + "',N'" + txtDiachi.Text + "',N'" + txtSDT.Text + "')";
+            sql = "select * from tblNhanvien where MaNV = N'" + txtManhanvien.Text + "'";
+            tblNV = ThucthiSQL.DocBang(sql);
+            if (tblNV.Rows.Count == 0)
+            {
+                sql = "INSERT INTO tblNhanvien(MaNV, TenNV, Gioitinh, Ngaysinh, CMT, MaCV, Diachi, SDT) Values (N'" + txtManhanvien.Text +
+                            "',N'" + txtTennhanvien.Text + "',N'" + gt + "',N'" + dtpNgaysinh.Text + "'," + txtCMT.Text + ",N'" + cboMaCV.Text + "',N'" + txtDiachi.Text + "',N'" + txtSDT.Text + "')";
+            }
+            else
+            {
+                sql = "UPDATE tblNhanvien SET TenNV = N'" + txtTennhanvien.Text + "', Gioitinh = N'" + gt + "', Ngaysinh = N'" + dtpNgaysinh.Text + "', CMT = " + txtCMT.Text + ", MaCV = N'" + cboMaCV.Text + "', Diachi = N'" + txtDiachi.Text + "', SDT = N'" + txtSDT.Text + "' WHERE MaNV = N'" + txtManhanvien.Text + "'";
+            }
+            
             ThucthiSQL.CapNhatDuLieu(sql);
             btnThem.Enabled = true;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
             btnXoa.Enabled = false;
             ResetValues();
+            grbNhanvien.Enabled = false;
             sql = "SELECT * FROM tblNhanvien";
             tblNV = ThucthiSQL.DocBang(sql);
             dataGridView.DataSource = tblNV;
@@ -138,15 +149,34 @@ namespace Quanlykho.Forms
             string sql;
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                sql = "DELETE FROM tblHang WHERE MaNV=N'" + txtManhanvien.Text + "'";
+                sql = "DELETE FROM tblNhanvien WHERE MaNV=N'" + txtManhanvien.Text + "'";
                 ThucthiSQL.CapNhatDuLieu(sql);
+                sql = "SELECT * FROM tblNhanvien";
+                tblNV = ThucthiSQL.DocBang(sql);
+                dataGridView.DataSource = tblNV;
                 Hienthi_Luoi();
+                ResetValues();
+                grbNhanvien.Enabled = false;
+                btnHuy.Enabled = false;
+                btnLuu.Enabled = false;
             }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnXoa.Enabled == false)
+            {
+                if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ResetValues();
+                    btnThem.Enabled = true;
+                    btnLuu.Enabled = false;
+                    btnHuy.Enabled = false;
+                    btnXoa.Enabled = false;
+                    grbNhanvien.Enabled = false;
+                }
+            }
+            else
             {
                 ResetValues();
                 btnThem.Enabled = true;
@@ -155,6 +185,7 @@ namespace Quanlykho.Forms
                 btnXoa.Enabled = false;
                 grbNhanvien.Enabled = false;
             }
+            
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -183,7 +214,7 @@ namespace Quanlykho.Forms
             {
                 grbNhanvien.Enabled = true;
                 btnLuu.Enabled = true;
-                btnXoa.Enabled = true;
+                btnHuy.Enabled = true;
                 txtManhanvien.Text = dataGridView.CurrentRow.Cells["MaNV"].Value.ToString();
                 txtTennhanvien.Text = dataGridView.CurrentRow.Cells["TenNV"].Value.ToString();
                 if (dataGridView.CurrentRow.Cells["Gioitinh"].Value.ToString() == "Nam")
@@ -199,6 +230,7 @@ namespace Quanlykho.Forms
                 cboMaCV.Text = dataGridView.CurrentRow.Cells["MaCV"].Value.ToString();
                 txtDiachi.Text = dataGridView.CurrentRow.Cells["Diachi"].Value.ToString();
                 txtSDT.Text = dataGridView.CurrentRow.Cells["SDT"].Value.ToString();
+                btnXoa.Enabled = true;
             }
         }
 
@@ -241,6 +273,26 @@ namespace Quanlykho.Forms
                 txtTimkiem.Text = "Nhập mã NV, tên NV, mã CV, giới tính, số điện thoại, địa chỉ hoặc CMT để tìm kiếm";
                 txtTimkiem.ForeColor = Color.Gray;
             }
+        }
+
+        private void cboMaCV_TextChanged(object sender, EventArgs e)
+        {
+            btnXoa.Enabled = false;
+        }
+
+        private void dtpNgaysinh_ValueChanged(object sender, EventArgs e)
+        {
+            btnXoa.Enabled = false;
+        }
+
+        private void rdoNu_CheckedChanged(object sender, EventArgs e)
+        {
+            btnXoa.Enabled = false;
+        }
+
+        private void rdoNam_CheckedChanged(object sender, EventArgs e)
+        {
+            btnXoa.Enabled = false;
         }
     }
 }

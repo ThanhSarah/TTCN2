@@ -279,21 +279,21 @@ namespace Quanlykho.Forms
             ThucthiSQL.CapNhatDuLieu(sql);
             txtTongtien.Text = tongmoi.ToString();
             lblBangchu.Text = "Bằng chữ:" + ThucthiSQL.ChuyenSoSangChu(tongmoi.ToString());
-            double sl = Convert.ToDouble(ThucthiSQL.DocBang("select Soluongtonkho from tblSach where Mahang=N'" + cboMahang.Text + "'").Rows[0][0].ToString());
+            double sl = Convert.ToDouble(ThucthiSQL.DocBang("select Soluongtonkho from tblHang where Mahang=N'" + cboMahang.Text + "'").Rows[0][0].ToString());
             double slmoi = sl - Convert.ToDouble(txtSoluong.Text);
-            sql = "update tblSach set Soluongtonkho=" + slmoi + " where Mahang=N'" + cboMahang.Text + "'";
+            sql = "update tblHang set Soluongtonkho=" + slmoi + " where Mahang=N'" + cboMahang.Text + "'";
             ThucthiSQL.CapNhatDuLieu(sql);
             ResetValuesHang();
             btnHuy.Enabled = true;
             btnIn.Enabled = true;
         }
 
-        private void DelUpdateHang(string masach, double slxoa, double Giabanxoa)
+        private void DelUpdateHang(string mahang, double slxoa, double Giabanxoa)
         {
-            double sl = Convert.ToDouble(ThucthiSQL.DocBang("select Soluongtonkho from tblSach where Masach=N'" +
-                masach + "'").Rows[0][0].ToString());
+            double sl = Convert.ToDouble(ThucthiSQL.DocBang("select Soluongtonkho from tblHang where Mahang=N'" +
+                mahang + "'").Rows[0][0].ToString());
             double slmoi = sl + slxoa;
-            string sql = "update tblSach set Soluongtonkho=" + slmoi + "where Masach=N'" + masach + "'";
+            string sql = "update tblHang set Soluongtonkho=" + slmoi + "where Mahang=N'" + mahang + "'";
             ThucthiSQL.CapNhatDuLieu(sql);
         }
         private void DelUpdateTongtien(string madonxoa, double thanhtienxoa)
@@ -437,7 +437,7 @@ namespace Quanlykho.Forms
                 sql = "DELETE tblChitietHDB WHERE MaHDB=N'" + txtMahoadon.Text + "' AND Mahang = N'" + mahangxoa + "'";
                 ThucthiSQL.CapNhatDuLieu(sql);
                 // Cập nhật lại số lượng cho các mặt hàng
-                sl = Convert.ToDouble(ThucthiSQL.DocBang("SELECT Soluongtonkho FROM tblSach WHERE Mahang = N'" + mahangxoa + "'").Rows[0][0].ToString());
+                sl = Convert.ToDouble(ThucthiSQL.DocBang("SELECT Soluongtonkho FROM tblHang WHERE Mahang = N'" + mahangxoa + "'").Rows[0][0].ToString());
                 slcon = sl + soluongxoa;
                 sql = "UPDATE tblHang SET Soluongtonkho =" + slcon + " WHERE Mahang= N'" + mahangxoa + "'";
                 ThucthiSQL.CapNhatDuLieu(sql);

@@ -12,6 +12,7 @@ namespace Quanlykho.Forms
 {
     public partial class frmChucvu : Form
     {
+        DataTable tblCV;
         public frmChucvu()
         {
             InitializeComponent();
@@ -24,23 +25,22 @@ namespace Quanlykho.Forms
             btnHuy.Enabled = false;
             btnXoa.Enabled = false;
             grbChucvu.Enabled = false;
+            string sql;
+            sql = "SELECT * FROM tblChucvu";
+            tblCV = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblCV;
             Hienthi_Luoi();
         }
 
         private void Hienthi_Luoi()
         {
-            string sql;
-            DataTable tblCV;
-            sql = "SELECT * FROM tblChucvu";
-            tblCV = ThucthiSQL.DocBang(sql);
-            dataGridView.DataSource = tblCV;
+            
             dataGridView.Columns[0].HeaderText = "Mã chức vụ";
             dataGridView.Columns[1].HeaderText = "Tên chức vụ";
             dataGridView.Columns[0].Width = 150;
             dataGridView.Columns[1].Width = 250;
             dataGridView.AllowUserToAddRows = false;
             dataGridView.EditMode = DataGridViewEditMode.EditProgrammatically;
-            tblCV.Dispose();
         }
 
         private void ResetValues()
@@ -73,15 +73,27 @@ namespace Quanlykho.Forms
                 txtTenCV.Focus();
                 return;
             }
-            sql = "INSERT INTO tblChucvu(MaCV, TenCV) Values (N'" + txtMaCV.Text +
-                            "',N'" + txtTenCV.Text + "')";
+            sql = "select * from tblChucVu where MaCV = N'" + txtMaCV.Text + "'";
+            tblCV = ThucthiSQL.DocBang(sql);
+            if (tblCV.Rows.Count == 0)
+            {
+                sql = "INSERT INTO tblChucvu(MaCV, TenCV) Values (N'" + txtMaCV.Text +"',N'" + txtTenCV.Text + "')";
+            }
+            else
+            {
+                sql = "UPDATE tblChucvu set TenCV = N'" + txtTenCV.Text + "' where MaCV = N'" + txtMaCV.Text +"'";
+            }
             ThucthiSQL.CapNhatDuLieu(sql);
             btnThem.Enabled = true;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
             btnXoa.Enabled = false;
             ResetValues();
+            sql = "SELECT * FROM tblChucvu";
+            tblCV = ThucthiSQL.DocBang(sql);
+            dataGridView.DataSource = tblCV;
             Hienthi_Luoi();
+            grbChucvu.Enabled = false;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -91,13 +103,32 @@ namespace Quanlykho.Forms
             {
                 sql = "DELETE FROM tblChucvu WHERE MaCV=N'" + txtMaCV.Text + "'";
                 ThucthiSQL.CapNhatDuLieu(sql);
+                sql = "SELECT * FROM tblChucvu";
+                tblCV = ThucthiSQL.DocBang(sql);
+                dataGridView.DataSource = tblCV;
                 Hienthi_Luoi();
+                ResetValues();
+                grbChucvu.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
             }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnXoa.Enabled == false)
+            {
+                if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ResetValues();
+                    btnThem.Enabled = true;
+                    btnLuu.Enabled = false;
+                    btnHuy.Enabled = false;
+                    btnXoa.Enabled = false;
+                    grbChucvu.Enabled = false;
+                }
+            }
+            else
             {
                 ResetValues();
                 btnThem.Enabled = true;
@@ -106,6 +137,7 @@ namespace Quanlykho.Forms
                 btnXoa.Enabled = false;
                 grbChucvu.Enabled = false;
             }
+            
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -132,12 +164,20 @@ namespace Quanlykho.Forms
             }
             else
             {
+                btnHuy.Enabled = true;
                 grbChucvu.Enabled = true;
                 btnLuu.Enabled = true;
-                btnXoa.Enabled = true;
+                
                 txtMaCV.Text = dataGridView.CurrentRow.Cells["MaCV"].Value.ToString();
                 txtTenCV.Text = dataGridView.CurrentRow.Cells["TenCV"].Value.ToString();
+                btnXoa.Enabled = true;
+                txtMaCV.Enabled = false;
             }
+        }
+
+        private void txtMaCV_TextChanged(object sender, EventArgs e)
+        {
+            btnXoa.Enabled = false;
         }
     }
 }

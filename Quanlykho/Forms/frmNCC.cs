@@ -71,7 +71,7 @@ namespace Quanlykho.Forms
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string sql;
+            string sql = "SELECT * FROM tblNCC where MaNCC = N'" + txtMaNCC.Text + "'";
             if (txtTenNCC.Text == "")
             {
                 MessageBox.Show("Bạn phải nhập tên nhà cung cấp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -90,9 +90,16 @@ namespace Quanlykho.Forms
                 txtSDT.Focus();
                 return;
             }
-
-            sql = "INSERT INTO tblNCC(MaNCC, TenNCC, Diachi, SDT) Values (N'" + txtMaNCC.Text +
+            tblNCC = ThucthiSQL.DocBang(sql);
+            if (tblNCC.Rows.Count == 0)
+            {
+                sql = "INSERT INTO tblNCC(MaNCC, TenNCC, Diachi, SDT) Values (N'" + txtMaNCC.Text +
                             "',N'" + txtTenNCC.Text + "',N'" + txtDiachi.Text + "',N'" + txtSDT.Text + "')";
+            }
+            else
+            {
+                sql = "UPDATE tblNCC SET TenNCC = N'" + txtTenNCC.Text + "', Diachi = N'" + txtDiachi.Text + "', SDT = N'" + txtSDT.Text + "' where MaNCC = N'" + txtMaNCC.Text + "'";
+            }
             ThucthiSQL.CapNhatDuLieu(sql);
             btnThem.Enabled = true;
             btnLuu.Enabled = false;
@@ -116,13 +123,29 @@ namespace Quanlykho.Forms
                 tblNCC = ThucthiSQL.DocBang(sql);
                 dataGridView.DataSource = tblNCC;
                 Hienthi_Luoi();
-                Hienthi_Luoi();
+                grbNhacungcap.Enabled = false;
+                ResetValues();
+                btnXoa.Enabled = false;
+                btnHuy.Enabled = false;
+                btnLuu.Enabled = false;
             }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnXoa.Enabled == false)
+            {
+                if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ResetValues();
+                    btnThem.Enabled = true;
+                    btnLuu.Enabled = false;
+                    btnHuy.Enabled = false;
+                    btnXoa.Enabled = false;
+                    grbNhacungcap.Enabled = false;
+                }
+            }
+            else
             {
                 ResetValues();
                 btnThem.Enabled = true;
@@ -131,6 +154,7 @@ namespace Quanlykho.Forms
                 btnXoa.Enabled = false;
                 grbNhacungcap.Enabled = false;
             }
+            
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -159,11 +183,12 @@ namespace Quanlykho.Forms
             {
                 grbNhacungcap.Enabled = true;
                 btnLuu.Enabled = true;
-                btnXoa.Enabled = true;
+                btnHuy.Enabled = true;
                 txtMaNCC.Text = dataGridView.CurrentRow.Cells["MaNCC"].Value.ToString();
                 txtTenNCC.Text = dataGridView.CurrentRow.Cells["TenNCC"].Value.ToString();
                 txtSDT.Text = dataGridView.CurrentRow.Cells["SDT"].Value.ToString();
                 txtDiachi.Text = dataGridView.CurrentRow.Cells["Diachi"].Value.ToString();
+                btnXoa.Enabled = true;
             }
         }
 
@@ -199,6 +224,11 @@ namespace Quanlykho.Forms
             {
                 MessageBox.Show("Có " + tblNCC.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void txtTenNCC_TextChanged(object sender, EventArgs e)
+        {
+            btnXoa.Enabled = false;
         }
     }
 }

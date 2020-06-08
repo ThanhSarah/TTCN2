@@ -101,6 +101,7 @@ namespace Quanlykho.Forms
             txtAnh.Text = "";
             txtSoluong.Text = "0";
             txtGhichu.Text = "";
+            picAnh.Image = null;
             txtDongiaban.ReadOnly = true;
             txtDongianhap.ReadOnly = true;
             txtSoluong.ReadOnly = true;
@@ -146,14 +147,25 @@ namespace Quanlykho.Forms
                 txtSoluong.Focus();
                 return;
             }
-            sql = "INSERT INTO tblHang(Mahang, Tenhang, Dongiaban, Dongianhap, Soluongtonkho, Xuatxu, Anh, Ghichu) Values (N'" + txtMaHH.Text +
+            sql = "select * from tblHang where Mahang = N'" + txtMaHH.Text + "'";
+            tblH = ThucthiSQL.DocBang(sql);
+            if (tblH.Rows.Count == 0)
+            {
+                sql = "INSERT INTO tblHang(Mahang, Tenhang, Dongiaban, Dongianhap, Soluongtonkho, Xuatxu, Anh, Ghichu) Values (N'" + txtMaHH.Text +
                             "',N'" + txtTenHH.Text + "',N'" + txtDongiaban.Text + "',N'" + txtDongianhap.Text + "',N'" + txtSoluong.Text + "',N'" + txtXuatxu.Text + "',N'" + txtAnh.Text + "',N'" + txtGhichu.Text + "')";
+            }
+            else
+            {
+                sql = "UPDATE tblHang SET Tenhang = N'" + txtTenHH.Text + "', Dongiaban = N'" + txtDongiaban.Text + "', Dongianhap = N'" + txtDongianhap.Text + "', Soluongtonkho = N'" + txtSoluong.Text + "', Xuatxu = N'" + txtXuatxu.Text + "', Anh = N'" + txtAnh.Text + "', Ghichu = N'" + txtGhichu.Text + "' where Mahang = N'" + txtMaHH.Text +"'";
+            }
+            
             ThucthiSQL.CapNhatDuLieu(sql);
             btnThem.Enabled = true;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
             btnXoa.Enabled = false;
             ResetValues();
+            grbThongtinhang.Enabled = false;
             sql = "SELECT * FROM tblHang";
             tblH = ThucthiSQL.DocBang(sql);
             dataGridView.DataSource = tblH;
@@ -162,7 +174,19 @@ namespace Quanlykho.Forms
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnXoa.Enabled == false)
+            {
+                if (MessageBox.Show("Bạn có chắc chắn muốn hủy mà chưa lưu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ResetValues();
+                    btnThem.Enabled = true;
+                    btnLuu.Enabled = false;
+                    btnHuy.Enabled = false;
+                    btnXoa.Enabled = false;
+                    grbThongtinhang.Enabled = false;
+                }
+            }
+            else
             {
                 ResetValues();
                 btnThem.Enabled = true;
@@ -184,11 +208,20 @@ namespace Quanlykho.Forms
                 tblH = ThucthiSQL.DocBang(sql);
                 dataGridView.DataSource = tblH;
                 Hienthi_Luoi();
+                ResetValues();
+                btnThem.Enabled = true;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+                btnXoa.Enabled = false;
+                txtDongiaban.ReadOnly = true;
+                txtDongianhap.ReadOnly = true;
+                grbThongtinhang.Enabled = false;
             }
         }
 
         private void dataGridView_DoubleClick(object sender, EventArgs e)
         {
+            
             if (dataGridView.Rows.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -196,9 +229,10 @@ namespace Quanlykho.Forms
             }
             else
             {
+                btnHuy.Enabled = true;
                 grbThongtinhang.Enabled = true;
                 btnLuu.Enabled = true;
-                btnXoa.Enabled = true;
+                
                 txtDongiaban.ReadOnly = false;
                 txtDongianhap.ReadOnly = false;
                 txtSoluong.ReadOnly = false;
@@ -208,9 +242,17 @@ namespace Quanlykho.Forms
                 txtDongianhap.Text = dataGridView.CurrentRow.Cells["Dongianhap"].Value.ToString();
                 txtAnh.Text = dataGridView.CurrentRow.Cells["Anh"].Value.ToString();
                 txtGhichu.Text = dataGridView.CurrentRow.Cells["Ghichu"].Value.ToString();
-                txtSoluong.Text = dataGridView.CurrentRow.Cells["Soluong"].Value.ToString();
+                txtSoluong.Text = dataGridView.CurrentRow.Cells["Soluongtonkho"].Value.ToString();
                 txtXuatxu.Text = dataGridView.CurrentRow.Cells["Xuatxu"].Value.ToString();
-                picAnh.Image = Image.FromFile(txtAnh.Text);
+                if(txtAnh.Text != "")
+                {
+                    picAnh.Image = Image.FromFile(txtAnh.Text);
+                }
+                else
+                {
+                    picAnh.Image = null;
+                }
+                btnXoa.Enabled = true;
             }
         }
 
@@ -246,6 +288,11 @@ namespace Quanlykho.Forms
             {
                 MessageBox.Show("Có " + tblH.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void txtTenHH_TextChanged(object sender, EventArgs e)
+        {
+            btnXoa.Enabled = false;
         }
     }
 }

@@ -87,6 +87,7 @@
             this.txtDongianhap.Name = "txtDongianhap";
             this.txtDongianhap.Size = new System.Drawing.Size(206, 26);
             this.txtDongianhap.TabIndex = 50;
+            this.txtDongianhap.TextChanged += new System.EventHandler(this.txtTenHH_TextChanged);
             // 
             // label4
             // 
@@ -101,16 +102,16 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(27, 477);
+            this.dataGridView.Location = new System.Drawing.Point(27, 426);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(794, 302);
+            this.dataGridView.Size = new System.Drawing.Size(794, 290);
             this.dataGridView.TabIndex = 48;
             this.dataGridView.DoubleClick += new System.EventHandler(this.dataGridView_DoubleClick);
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(873, 572);
+            this.btnHuy.Location = new System.Drawing.Point(873, 517);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(112, 35);
@@ -121,7 +122,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(873, 246);
+            this.btnLuu.Location = new System.Drawing.Point(873, 201);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(112, 35);
@@ -148,6 +149,7 @@
             this.txtXuatxu.Name = "txtXuatxu";
             this.txtXuatxu.Size = new System.Drawing.Size(248, 26);
             this.txtXuatxu.TabIndex = 43;
+            this.txtXuatxu.TextChanged += new System.EventHandler(this.txtTenHH_TextChanged);
             // 
             // txtTenHH
             // 
@@ -156,6 +158,7 @@
             this.txtTenHH.Name = "txtTenHH";
             this.txtTenHH.Size = new System.Drawing.Size(206, 26);
             this.txtTenHH.TabIndex = 41;
+            this.txtTenHH.TextChanged += new System.EventHandler(this.txtTenHH_TextChanged);
             // 
             // txtMaHH
             // 
@@ -202,6 +205,7 @@
             this.txtDongiaban.Name = "txtDongiaban";
             this.txtDongiaban.Size = new System.Drawing.Size(206, 26);
             this.txtDongiaban.TabIndex = 55;
+            this.txtDongiaban.TextChanged += new System.EventHandler(this.txtTenHH_TextChanged);
             // 
             // picAnh
             // 
@@ -209,12 +213,13 @@
             this.picAnh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.picAnh.Name = "picAnh";
             this.picAnh.Size = new System.Drawing.Size(250, 95);
+            this.picAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAnh.TabIndex = 56;
             this.picAnh.TabStop = false;
             // 
             // btnDong
             // 
-            this.btnDong.Location = new System.Drawing.Point(873, 743);
+            this.btnDong.Location = new System.Drawing.Point(873, 667);
             this.btnDong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(112, 35);
@@ -225,7 +230,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(873, 412);
+            this.btnXoa.Location = new System.Drawing.Point(873, 363);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(112, 35);
@@ -256,11 +261,10 @@
             this.grbThongtinhang.Controls.Add(this.txtXuatxu);
             this.grbThongtinhang.Location = new System.Drawing.Point(27, 32);
             this.grbThongtinhang.Name = "grbThongtinhang";
-            this.grbThongtinhang.Size = new System.Drawing.Size(794, 354);
+            this.grbThongtinhang.Size = new System.Drawing.Size(794, 341);
             this.grbThongtinhang.TabIndex = 58;
             this.grbThongtinhang.TabStop = false;
             this.grbThongtinhang.Text = "Thông tin hàng";
-//            this.grbThongtinhang.Enter += new System.EventHandler(this.grbThongtinhang_Enter);
             // 
             // txtGhichu
             // 
@@ -270,6 +274,7 @@
             this.txtGhichu.Name = "txtGhichu";
             this.txtGhichu.Size = new System.Drawing.Size(248, 78);
             this.txtGhichu.TabIndex = 62;
+            this.txtGhichu.TextChanged += new System.EventHandler(this.txtTenHH_TextChanged);
             // 
             // label6
             // 
@@ -288,6 +293,7 @@
             this.txtSoluong.Name = "txtSoluong";
             this.txtSoluong.Size = new System.Drawing.Size(206, 26);
             this.txtSoluong.TabIndex = 60;
+            this.txtSoluong.TextChanged += new System.EventHandler(this.txtTenHH_TextChanged);
             // 
             // label3
             // 
@@ -317,10 +323,11 @@
             this.txtAnh.Name = "txtAnh";
             this.txtAnh.Size = new System.Drawing.Size(180, 26);
             this.txtAnh.TabIndex = 57;
+            this.txtAnh.TextChanged += new System.EventHandler(this.txtTenHH_TextChanged);
             // 
             // btnTimkiem
             // 
-            this.btnTimkiem.Location = new System.Drawing.Point(708, 412);
+            this.btnTimkiem.Location = new System.Drawing.Point(709, 381);
             this.btnTimkiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnTimkiem.Name = "btnTimkiem";
             this.btnTimkiem.Size = new System.Drawing.Size(112, 35);
@@ -331,7 +338,7 @@
             // 
             // txtTimkiem
             // 
-            this.txtTimkiem.Location = new System.Drawing.Point(27, 417);
+            this.txtTimkiem.Location = new System.Drawing.Point(27, 385);
             this.txtTimkiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTimkiem.Name = "txtTimkiem";
             this.txtTimkiem.Size = new System.Drawing.Size(670, 26);
@@ -343,7 +350,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 812);
+            this.ClientSize = new System.Drawing.Size(1016, 751);
             this.Controls.Add(this.txtTimkiem);
             this.Controls.Add(this.btnTimkiem);
             this.Controls.Add(this.grbThongtinhang);
@@ -355,6 +362,7 @@
             this.Controls.Add(this.btnThem);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmHang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thông tin hàng hóa";
             this.Load += new System.EventHandler(this.frmHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

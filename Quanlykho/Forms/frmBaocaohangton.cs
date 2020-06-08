@@ -49,9 +49,9 @@ namespace Quanlykho.Forms
         private void btnInbaocao_Click(object sender, EventArgs e)
         {
             string sql;
-            sql = "SELECT Masach, Tensach , Soluongtonkho, Dongianhap, Dongiaban FROM tblSach ";
-            DataTable tblSach;
-            tblSach = ThucthiSQL.DocBang(sql);
+            sql = "SELECT Mahang, Tenhang , Soluongtonkho, Dongianhap, Dongiaban FROM tblHang ";
+            DataTable tblHang;
+            tblHang = ThucthiSQL.DocBang(sql);
             COMExcel.Application exApp = new COMExcel.Application();
             COMExcel.Workbook exBook;
             COMExcel.Worksheet exSheet;
@@ -105,14 +105,14 @@ namespace Quanlykho.Forms
             exRange.Range["F11:F11"].Value = "Đơn giá bán";
 
             exRange = exSheet.Cells[1][hang + 11];
-            exRange.Range["A1:F" + (tblSach.Rows.Count + 1) + ""].Borders.Color = Color.Black;
-            exRange.Range["A2:F" + (tblSach.Rows.Count + 1) + ""].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Range["A1:F" + (tblHang.Rows.Count + 1) + ""].Borders.Color = Color.Black;
+            exRange.Range["A2:F" + (tblHang.Rows.Count + 1) + ""].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange = exSheet.Cells[1, 1];
-            for (hang = 0; hang < tblSach.Rows.Count; hang++)
+            for (hang = 0; hang < tblHang.Rows.Count; hang++)
             {
                 exSheet.Cells[1][hang + 12] = hang + 1;
-                for (cot = 0; cot < tblSach.Columns.Count; cot++)
-                    exSheet.Cells[cot + 2][hang + 12] = tblSach.Rows[hang][cot].ToString();
+                for (cot = 0; cot < tblHang.Columns.Count; cot++)
+                    exSheet.Cells[cot + 2][hang + 12] = tblHang.Rows[hang][cot].ToString();
             }
             exRange = exSheet.Cells[4][hang + 15];
             exRange.Range["A1:C1"].MergeCells = true;
