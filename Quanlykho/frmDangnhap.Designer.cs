@@ -40,51 +40,48 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(24, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 20);
+            this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên Đăng Nhập";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 145);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(24, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mật khẩu";
             // 
             // btnDangnhap
             // 
-            this.btnDangnhap.Location = new System.Drawing.Point(40, 328);
-            this.btnDangnhap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDangnhap.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnDangnhap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDangnhap.Location = new System.Drawing.Point(27, 213);
             this.btnDangnhap.Name = "btnDangnhap";
-            this.btnDangnhap.Size = new System.Drawing.Size(132, 41);
+            this.btnDangnhap.Size = new System.Drawing.Size(88, 27);
             this.btnDangnhap.TabIndex = 3;
             this.btnDangnhap.Text = "Đăng nhập";
-            this.btnDangnhap.UseVisualStyleBackColor = true;
+            this.btnDangnhap.UseVisualStyleBackColor = false;
             this.btnDangnhap.Click += new System.EventHandler(this.btnDangnhap_Click);
             // 
             // txtMatkhau
             // 
-            this.txtMatkhau.Location = new System.Drawing.Point(219, 137);
-            this.txtMatkhau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMatkhau.Location = new System.Drawing.Point(146, 89);
             this.txtMatkhau.Multiline = true;
             this.txtMatkhau.Name = "txtMatkhau";
-            this.txtMatkhau.Size = new System.Drawing.Size(302, 28);
+            this.txtMatkhau.Size = new System.Drawing.Size(203, 20);
             this.txtMatkhau.TabIndex = 5;
             this.txtMatkhau.Enter += new System.EventHandler(this.txtMatkhau_Enter);
             this.txtMatkhau.Leave += new System.EventHandler(this.txtMatkhau_Leave);
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(388, 328);
-            this.btnHuy.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnHuy.Location = new System.Drawing.Point(259, 213);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(133, 41);
+            this.btnHuy.Size = new System.Drawing.Size(89, 27);
             this.btnHuy.TabIndex = 7;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
@@ -93,9 +90,10 @@
             // chkShowpass
             // 
             this.chkShowpass.AutoSize = true;
-            this.chkShowpass.Location = new System.Drawing.Point(40, 231);
+            this.chkShowpass.Location = new System.Drawing.Point(27, 150);
+            this.chkShowpass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkShowpass.Name = "chkShowpass";
-            this.chkShowpass.Size = new System.Drawing.Size(148, 24);
+            this.chkShowpass.Size = new System.Drawing.Size(102, 17);
             this.chkShowpass.TabIndex = 8;
             this.chkShowpass.Text = "Show Password";
             this.chkShowpass.UseVisualStyleBackColor = true;
@@ -104,9 +102,10 @@
             // cboTendangnhap
             // 
             this.cboTendangnhap.FormattingEnabled = true;
-            this.cboTendangnhap.Location = new System.Drawing.Point(219, 46);
+            this.cboTendangnhap.Location = new System.Drawing.Point(146, 30);
+            this.cboTendangnhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboTendangnhap.Name = "cboTendangnhap";
-            this.cboTendangnhap.Size = new System.Drawing.Size(302, 28);
+            this.cboTendangnhap.Size = new System.Drawing.Size(203, 21);
             this.cboTendangnhap.TabIndex = 9;
             this.cboTendangnhap.DropDown += new System.EventHandler(this.cbTendangnhap_DropDown);
             this.cboTendangnhap.Enter += new System.EventHandler(this.cboTendangnhap_Enter);
@@ -114,9 +113,9 @@
             // 
             // frmDangnhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 402);
+            this.ClientSize = new System.Drawing.Size(365, 261);
             this.Controls.Add(this.cboTendangnhap);
             this.Controls.Add(this.chkShowpass);
             this.Controls.Add(this.btnHuy);
@@ -124,7 +123,6 @@
             this.Controls.Add(this.btnDangnhap);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmDangnhap";
             this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.frmDangnhap_Load);

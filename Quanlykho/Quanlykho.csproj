@@ -190,6 +190,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="bin\Debug\Quanlykho.exe.config" />
     <None Include="bin\Debug\Quanlykho.vshost.exe.config" />
@@ -215,11 +216,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Quankho.mdf</DependentUpon>
     </Content>
+    <None Include="bin\Debug\Image\bìa.jpg" />
+    <None Include="bin\Debug\Image\Document 2 Add.png" />
+    <None Include="bin\Debug\Image\Glyph Add.png" />
+    <None Include="bin\Debug\Image\Glyph Remove.png" />
     <Content Include="bin\Debug\Quanlykho.vshost.exe" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\Image\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>

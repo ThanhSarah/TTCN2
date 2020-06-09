@@ -42,19 +42,19 @@ namespace Quanlykho.Forms
         {
             string sql;
             if ((txtMahoadon.Text == "") &&
-               (txtMaNV.Text == "") && (txtMaNCC.Text == "") &&
+               (txtTenNV.Text == "") && (txtTenNCC.Text == "") &&
                (txtTongtien.Text == ""))
             {
                 MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yêu cầu ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            sql = "SELECT * FROM tblHoadonnhap WHERE 1=1";
+            sql = "SELECT * FROM tblHoadonnhap as a, tblNhanvien as b, tblNCC as c WHERE 1=1 and a.MaNV =b.MaNV and a.MaNCC =c.MaNCC";
             if (txtMahoadon.Text != "")
-                sql = sql + " AND MaHDB Like N'%" + txtMahoadon.Text + "%'";
-            if (txtMaNV.Text != "")
-                sql = sql + " AND MaNV Like N'%" + txtMaNV.Text + "%'";
-            if (txtMaNCC.Text != "")
-                sql = sql + " AND MaNCC Like N'%" + txtMaNCC.Text + "%'";
+                sql = sql + " AND a.MaHDN Like N'%" + txtMahoadon.Text + "%'";
+            if (txtTenNV.Text != "")
+                sql = sql + " AND b.TenNV Like N'%" + txtTenNV.Text + "%'";
+            if (txtTenNCC.Text != "")
+                sql = sql + " AND c.TenNCC Like N'%" + txtTenNCC.Text + "%'";
             if (txtTongtien.Text != "")
                 sql = sql + " AND Tongtien <=" + txtTongtien.Text;
             tblHDB = ThucthiSQL.DocBang(sql);

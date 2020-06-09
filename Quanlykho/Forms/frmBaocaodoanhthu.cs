@@ -78,13 +78,13 @@ namespace Quanlykho.Forms
             exRange.Range["A1:B1"].MergeCells = true;
             exRange.Range["A1:B1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
 
-            exRange.Range["A1:B1"].Value = "NHÀ SÁCH XƯA VÀ NAY";
+            exRange.Range["A1:B1"].Value = "Showroom phân phối nội thất Furniland";
             exRange.Range["A2:B2"].MergeCells = true;
             exRange.Range["A2:B2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A2:B2"].Value = "676 ĐỐNG ĐA, HÀ NỘI";
+            exRange.Range["A2:B2"].Value = "92 Mễ Trì Hạ, Mễ Trì, Từ Liêm, Hà Nội";
             exRange.Range["A3:B3"].MergeCells = true;
             exRange.Range["A3:B3"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A3:B3"].Value = "Điện thoại: 0917431234";
+            exRange.Range["A3:B3"].Value = "Điện thoại: 024.7309.0066";
 
             exRange.Range["B6:F7"].Font.Size = 16;
             exRange.Range["B6:F7"].Font.Name = "Times new roman";

@@ -363,13 +363,13 @@ namespace Quanlykho.Forms
             exRange.Range["B1:B1"].ColumnWidth = 15;
             exRange.Range["A1:B1"].MergeCells = true;
             exRange.Range["A1:B1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A1:B1"].Value = "NHÀ SÁCH XƯA VÀ NAY";
+            exRange.Range["A1:B1"].Value = "Showroom phân phối nội thất Furniland";
             exRange.Range["A2:B2"].MergeCells = true;
             exRange.Range["A2:B2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A2:B2"].Value = "676 ĐỐNG ĐA, HÀ NỘI";
+            exRange.Range["A2:B2"].Value = "92 Mễ Trì Hạ, Mễ Trì, Từ Liêm, Hà Nội";
             exRange.Range["A3:B3"].MergeCells = true;
             exRange.Range["A3:B3"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A3:B3"].Value = "Điện thoại: 0917431234";
+            exRange.Range["A3:B3"].Value = "Điện thoại: 024.7309.0066";
             exRange.Range["C2:E2"].Font.Size = 16;
             exRange.Range["C2:E2"].Font.Name = "Times new roman";
             exRange.Range["C2:E2"].Font.Bold = true;
@@ -377,7 +377,7 @@ namespace Quanlykho.Forms
             exRange.Range["C2:E2"].MergeCells = true;
             exRange.Range["C2:E2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["C2:E2"].Value = "HÓA ĐƠN NHẬP";
-            sql = "select a.MaHDN, a.Tongtien, b.TenNCC, b.Diachi, b.Sodienthoai, a.Ngaynhap, c.TenNV from tblHoadonnhap as a, tblNCC as b, tblNhanvien as c where a.MaHDN=N'" + txtMahoadon.Text + "' AND a.MaNCC=b.MaNCC AND a.MaNV=c.MaNV";
+            sql = "select a.MaHDN, a.Tongtien, b.TenNCC, b.Diachi, b.SDT, a.Ngaynhap, c.TenNV from tblHoadonnhap as a, tblNCC as b, tblNhanvien as c where a.MaHDN=N'" + txtMahoadon.Text + "' AND a.MaNCC=b.MaNCC AND a.MaNV=c.MaNV";
             tblThongtinHD = ThucthiSQL.DocBang(sql);
             exRange.Range["B6:C9"].Font.Size = 12;
             exRange.Range["B6:C9"].Font.Name = "Times new roman";
