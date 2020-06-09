@@ -27,16 +27,19 @@ namespace Quanlykho.Forms
 
         private void thôngTinHàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nhà sách XƯA VÀ NAY Hà Nội" + Environment.NewLine +
-                            "Địa chỉ: 676 Đống Đa, Hà Nội" + Environment.NewLine +
-                            "Email: nsxuavanay@gmail.com" + Environment.NewLine +
-                            "Số điện thoại: 0917431234");
+            MessageBox.Show("Showroom phân phối nội thất Furniland" + Environment.NewLine +
+                            "Địa chỉ: 92 Mễ Trì Hạ, Mễ Trì, Từ Liêm, Hà Nội" + Environment.NewLine +
+                            "Email: noithatFurnilandHN@gmail.com" + Environment.NewLine +
+                            "Số điện thoại: 024.7309.0066");
         }
 
         private void thôngTinPhiênBảnPhầnMềmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Họ tên sinh viên: Nguyễn Thị Thanh" + Environment.NewLine +
-                            "Mã số sinh viên: 20A4040132" + Environment.NewLine +
+            MessageBox.Show("Nhóm: 37" + Environment.NewLine +
+                            "Họ tên sinh viên: " + Environment.NewLine +
+                            "           Nguyễn Thị Thanh - 20A4040132 " + Environment.NewLine +
+                            "           Phạm Thị Thúy Quỳnh - 20A4040124 " + Environment.NewLine +
+                            "           Cù Thị Thủy Tiên - 20A4040138 " + Environment.NewLine +
                             "Thực tập chuyên ngành 2");
         }
 
@@ -77,10 +80,27 @@ namespace Quanlykho.Forms
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            lbldatetime.Text = DateTime.Now.ToLongDateString();
             if (frmDangnhap.MaCV != "QL")
             {
-                nhânViênToolStripMenuItem.Visible = false;
-                chứcVụToolStripMenuItem.Visible = false;
+                nhânViênToolStripMenuItem.Enabled = false;
+                chứcVụToolStripMenuItem.Enabled = false;
+            }
+            if (frmDangnhap.MaCV == "NVBH")
+            {
+                báoCáoToolStripMenuItem.Enabled = false;
+                tìmKiếmToolStripMenuItem.Enabled = false;
+                hóaĐơnNhậpToolStripMenuItem.Enabled = false;
+            }
+            if (frmDangnhap.MaCV == "NVK")
+            {
+                báoCáoDoanhThuToolStripMenuItem.Enabled = false;
+                tìmKiếmHóaĐơnBánToolStripMenuItem.Enabled = false;
+                hóaĐơnBánToolStripMenuItem.Enabled = false;
+            }
+            if (frmDangnhap.MaCV == "NVKT")
+            {
+                hóaToolStripMenuItem.Enabled = false;
             }
         }
 

@@ -26,6 +26,11 @@ namespace Quanlykho.Forms
 
         private void frmHoadonban_Load(object sender, EventArgs e)
         {
+            if (frmDangnhap.MaCV != "QL" && frmDangnhap.MaCV != "NVKT")
+            {
+                lblTrangthai.Enabled = false;
+                chkThanhtoan.Enabled = false;
+            }
             btnThem.Enabled = true;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
@@ -285,7 +290,6 @@ namespace Quanlykho.Forms
             ThucthiSQL.CapNhatDuLieu(sql);
             ResetValuesHang();
             btnHuy.Enabled = true;
-            btnIn.Enabled = true;
         }
 
         private void DelUpdateHang(string mahang, double slxoa, double Giabanxoa)
@@ -464,6 +468,25 @@ namespace Quanlykho.Forms
             if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
                 e.Handled = false;
             else e.Handled = true;
+        }
+
+        private void chkThanhtoan_CheckedChanged(object sender, EventArgs e)
+        {
+            string sql, trangthai;
+            if (chkThanhtoan.Checked == true)
+            {
+                trangthai = "Da thanh toan";
+                sql = "UPDATE tblHoadonban SET Trangthai = N'" + trangthai + "' where MaHDB = N'" + txtMahoadon.Text + "'";
+                ThucthiSQL.CapNhatDuLieu(sql);
+                btnIn.Enabled = true;
+            }
+            else
+            {
+                trangthai = "Chua thanh toan";
+                sql = "UPDATE tblHoadonban SET Trangthai = N'" + trangthai + "' where MaHDB = N'" + txtMahoadon.Text + "'";
+                ThucthiSQL.CapNhatDuLieu(sql);
+                btnIn.Enabled = false;
+            }
         }
     }
 }
